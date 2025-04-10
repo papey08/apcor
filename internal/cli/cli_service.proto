@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+package apcor;
+option go_package = "/gen";
+
+service CliService {
+    rpc InstallDeps(InstallDepsRequest) returns (InstallDepsResponse) {};
+    rpc ExecPreTasks(ExecPreTasksRequest) returns (ExecPreTasksResponse) {};
+    rpc ExecPostTasks(ExecPostTasksRequest) returns (ExecPostTasksResponse) {};
+    rpc Clone(CloneRequest) returns (CloneResponse) {};
+    rpc Checkout(CheckoutRequest) returns (CheckoutResponse) {};
+    rpc Branch(BranchRequest) returns (BranchResponse) {};
+    rpc Pull(PullRequest) returns (PullResponse) {};
+    rpc PreBuild(PreBuildRequest) returns (PreBuildResponse) {};
+    rpc Build(BuildRequest) returns (BuildResponse) {};
+    rpc Run(RunRequest) returns (RunResponse) {};
+    rpc Debug(DebugRequest) returns (DebugResponse) {};
+    rpc Stop(StopRequest) returns (StopResponse) {};
+}
+
+message InstallDepsRequest {
+    string platform = 1;
+}
+
+message InstallDepsResponse {}
+
+message ExecPreTasksRequest {}
+
+message ExecPreTasksResponse {}
+
+message ExecPostTasksRequest {}
+
+message ExecPostTasksResponse {}
+
+message CloneRequest {
+    Repos repos = 1;
+}
+
+message CloneResponse {}
+
+message CheckoutRequest {
+    Repos repos = 1;
+    string branch = 2;
+}
+
+message CheckoutResponse {}
+
+message BranchRequest {}
+
+message BranchResponse {
+    map<string, string> branches = 1;
+}
+
+message PullRequest {
+    Repos repos = 1;
+}
+
+message PullResponse {}
+
+message PreBuildRequest {
+    Repos repos = 1;
+}
+
+message PreBuildResponse {}
+
+message BuildRequest {
+    Repos repos = 1;
+}
+
+message BuildResponse {}
+
+message RunRequest {
+    Repos repos = 1;
+}
+
+message RunResponse {}
+
+message DebugRequest {
+    Repos repos = 1;
+}
+
+message DebugResponse {}
+
+message StopRequest {
+    Repos repos = 1;
+}
+
+message StopResponse {}
+
+message Repos {
+    repeated string repos = 1;
+    optional string group = 2; 
+}
